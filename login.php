@@ -7,6 +7,14 @@
   include('includes/head.inc.php'); // include global css, javascript, end the head and open the body
 ?>
 
+
+<!-- <script type="text/javascript" src="lab4.js"></script> -->
+</head>
+
+<?php 
+  include('includes/nav.inc.php'); // include global css, javascript, end the head and open the body
+?>
+
   <div class="form">
     <form action="/action_page.php">
       <div class="form-group">
@@ -17,7 +25,7 @@
         <label for="pwd">Password:</label>
         <input type="password" class="form-control" id="pwd">
       </div>
-      <button type="submit" class="btn btn-default">Submit</button>
+      <button type="submit" class="btn btn-primary">Submit</button>
     </form>
       <br>
       <button type="submit" class="btn btn-default" data-toggle="modal" data-target="#accountModal">Create Account</button>
@@ -39,15 +47,15 @@
             <form action="/action_page.php">
               <div class="form-group">
                 <label for="name">Name:</label>
-                <input type="name" class="form-control" id="name">
+                <input type="name" class="form-control" id="login-name">
               </div>
               <div class="form-group">
                 <label for="email">Email address:</label>
-                <input type="email" class="form-control" id="email">
+                <input type="email" class="form-control" id="login-email">
               </div>
               <div class="form-group">
                 <label for="pwd">Password:</label>
-                <input type="password" class="form-control" id="pwd">
+                <input type="password" class="form-control" id="login-pwd">
               </div>
               <button type="submit" class="btn btn-default">Submit</button>
             </form>

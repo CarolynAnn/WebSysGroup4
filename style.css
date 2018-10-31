@@ -32,7 +32,7 @@
       color: #fff !important;
   }
 
-  #my-events {
+  .page {
     padding-top: 100px;
   }
 
@@ -49,4 +49,16 @@
 
   .modal {
     padding-top: 100px;
+  }
+
+  #profile-body {
+    text-align: center;
+  }
+
+  .rowEvents {
+    margin-bottom: 80px;
+  }
+
+  .event-btn {
+    margin-right: 5px;
   }

@@ -7,8 +7,15 @@
   include('includes/head.inc.php'); // include global css, javascript, end the head and open the body
 ?>
 
+<!-- <script type="text/javascript" src="lab4.js"></script> -->
+</head>
+
+<?php 
+  include('includes/nav.inc.php'); // include global css, javascript, end the head and open the body
+?>
+
   <div class="container-fluid bg-grey form">
-    <h2 class="text-center">CREATE</h2>
+    <h2 class="text-center">Create</h2>
     <form action="/action_page.php">
       <div class="form-group">
         <label for="title">Title:</label>
