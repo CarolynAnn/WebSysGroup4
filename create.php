@@ -22,11 +22,11 @@
         <input type="title" class="form-control" id="title">
       </div>
       <div class="form-group">
-        <label for="start-time">Start Time:</label>
+        <label for="start-time">Start Time <em>(Last Value for AM/PM)</em>:</label>
         <input type="time" class="form-control" id="start-time">
       </div>
       <div class="form-group">
-        <label for="end-time">End Time:</label>
+        <label for="end-time">End Time <em>(Last Value for AM/PM)</em>:</label>
         <input type="time" class="form-control" id="end-time">
       </div>
       <div class="form-group">

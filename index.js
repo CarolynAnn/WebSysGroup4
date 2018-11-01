@@ -21,10 +21,23 @@ function loadEvents(){
                 var loc = document.createElement("p");
                 loc.appendChild(document.createTextNode("Where: " + data[i][5]));
 
-                //Get Date
+                //Get Date & convert to readable format
                 var date = document.createElement("p");
-                date.appendChild(document.createTextNode("When: " + data[i][2] + ", " + data[i][3] + " - " + data[i][4]));
+                var d = new Date(data[i][2]+"T"+data[i][3]);
+                // d.setDate(d.getDate());
+                var locale = "en-us";
+                var month = d.toLocaleString(locale, {month: "short"});
+                var day = d.toLocaleString(locale, {weekday: "short"});
 
+                //Get start & end times & convert to readable format
+                var startTime = data[i][3];
+                startTime = startTime.substr(0,5);
+
+                var endTime = data[i][4];
+                endTime = endTime.substr(0,5);
+
+                date.appendChild(document.createTextNode("When: " + day + " "+ month +" "+ d.getDate() + ", " + d.getFullYear() + ", " + startTime + " - " + endTime));
+                
                 //Create Buttons
                 //Save Event Button
                 var save = document.createElement("button");
