@@ -24,10 +24,7 @@ function loadEvents(){
                 //Get Date & convert to readable format
                 var date = document.createElement("p");
                 var d = new Date(data[i][2]+"T"+data[i][3]);
-                // d.setDate(d.getDate());
-                var locale = "en-us";
-                var month = d.toLocaleString(locale, {month: "short"});
-                var day = d.toLocaleString(locale, {weekday: "short"});
+                var dateStr = formatDate(d);
 
                 //Get start & end times & convert to readable format
                 var startTime = data[i][3];
@@ -36,7 +33,7 @@ function loadEvents(){
                 var endTime = data[i][4];
                 endTime = endTime.substr(0,5);
 
-                date.appendChild(document.createTextNode("When: " + day + " "+ month +" "+ d.getDate() + ", " + d.getFullYear() + ", " + startTime + " - " + endTime));
+                date.appendChild(document.createTextNode("When: " + dateStr + ", " + startTime + " - " + endTime));
                 
                 //Create Buttons
                 //Save Event Button
@@ -89,14 +86,23 @@ function loadEvents(){
     });
 }
 
+function formatDate(date){
+    var locale = "en-us";
+    var month = date.toLocaleString(locale, {month: "short"});
+    var day = date.toLocaleString(locale, {weekday: "short"})
+    return day + " "+ month +" "+ date.getDate() + ", " + date.getFullYear();
+}
+
 /*Upon clicking "View" button for an event, populate modal with respective info for that specific event*/
 function setModal(data, i){
     i = i[0];
     data = data[i];
+    var d = new Date(data[2]+"T"+data[3]);
+    var dateStr = formatDate(d);
     $("#event-modal-title").html(data[1]);
-    $("#event-modal-date").html(data[2]);
-    $("#event-modal-start").html(data[3]);
-    $("#event-modal-end").html(data[4]);
+    $("#event-modal-date").html(dateStr);
+    $("#event-modal-start").html(data[3].substr(0,5));
+    $("#event-modal-end").html(data[4].substr(0,5));
     $("#event-modal-loc").html(data[5]);
     $("#event-modal-owner").html(data[7]);
     $("#event-modal-desc").html(data[6]);
