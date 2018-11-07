@@ -1,4 +1,4 @@
-<body>
+
   	<nav class="navbar navbar-default navbar-fixed-top">
 	    <div class="container">
 	      <div class="navbar-header">
@@ -15,7 +15,17 @@
 	          <li><a href="profile.php">PROFILE</a></li>
 	          <li><a href="events.php">MY EVENTS</a></li>
 	          <li><a href="schedule.php">SAVED</a></li>
-	          <li><a href="login.php">LOGIN</a></li>
+	          <?php
+				if(isset($_SESSION['status']) && $_SESSION['status'] == 'authorized') {
+					$query = $dbcon->query("SELECT * FROM `users` WHERE userID = " . $_SESSION['userID']);
+					$user = $query->fetch(PDO::FETCH_ASSOC);
+
+					echo "<li><a href = \"index.php\">LOGOUT</a></li>"; 
+				}
+				else{
+					echo "<li><a href = \"login.php\">LOGIN</a></li>"; 
+				}
+			  ?>
 	        </ul>
 	      </div>
 	    </div>

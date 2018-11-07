@@ -7,8 +7,8 @@
   include('includes/head.inc.php'); // include global css, javascript, end the head and open the body
 ?>
 
-<script type="text/javascript" src="index.js"></script>
-</head>
+<script type="text/javascript" src="resources/scripts/index.js"></script>
+
 
 <?php 
   include('includes/nav.inc.php'); // include global css, javascript, end the head and open the body
