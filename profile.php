@@ -25,9 +25,11 @@
 			<?php
 				if (isset($_GET['userID'])){
 					// load user name
+					$userID = $_GET['userID'];
 					$query = $dbcon->query("SELECT firstName, lastName FROM users WHERE userID = $userID");
 					$name = $query->fetch(PDO::FETCH_ASSOC);
-					echo "<p id=\"profile-name\">" . $name['firstName'] . ' ' . $name['lastName'] . "</p>"; 
+					echo "<p id=\"profile-name\">" . $name['firstName'] . ' ' . $name['lastName'] . "</p>";
+					 
 				}
 			?>
 			

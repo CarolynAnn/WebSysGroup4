@@ -8,7 +8,7 @@ function db_connect($select_db = true) {
     global $db_config, $dbcon;
 	
 	$db_config = array(
-		'name'    =>  'choretracker',
+		'name'    =>  'rpi_events',
 		'host'    =>  'localhost:3366',
 		'user'    =>  'root',
 		'pass'	  =>  'password'

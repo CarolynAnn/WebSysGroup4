@@ -57,6 +57,10 @@
                 <label for="pwd">Password:</label>
                 <input type="password" class="form-control" id="login-pwd" name="password">
               </div>
+              <div class="form-group">
+                <label for="cpwd">Confirm Password:</label>
+                <input type="password" class="form-control" id="login-cpwd" name="passwordc">
+              </div>
               <button type="submit" class="btn btn-default" name="registerSubmit">Submit</button>
             </form>
           </div>
