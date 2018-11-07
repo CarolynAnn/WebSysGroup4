@@ -22,7 +22,15 @@
 			<p><em>Name:</em></p>
 		</div>
 		<div class="col-sm-4" style="text-align: left;">
-			<p id="profile-name">John Smith</p>
+			<?php
+				if (isset($_GET['userID'])){
+					// load user name
+					$query = $dbcon->query("SELECT firstName, lastName FROM users WHERE userID = $userID");
+					$name = $query->fetch(PDO::FETCH_ASSOC);
+					echo "<p id=\"profile-name\">" . $name['firstName'] . ' ' . $name['lastName'] . "</p>"; 
+				}
+			?>
+			
 		</div>
 	</div>
 	<div class="row">

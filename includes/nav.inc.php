@@ -20,7 +20,8 @@
 					$query = $dbcon->query("SELECT * FROM `users` WHERE userID = " . $_SESSION['userID']);
 					$user = $query->fetch(PDO::FETCH_ASSOC);
 
-					echo "<li><a href = \"index.php\">LOGOUT</a></li>"; 
+					echo "<li><a href = \"index.php?status=logout\">LOGOUT</a></li>"; 
+					echo "<li>Welcome, " . $user['firstName'] . "</li>";
 				}
 				else{
 					echo "<li><a href = \"login.php\">LOGIN</a></li>"; 
