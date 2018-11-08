@@ -7,9 +7,6 @@
   include('includes/head.inc.php'); // include global css, javascript, end the head and open the body
 ?>
 
-<!-- <script type="text/javascript" src="lab4.js"></script> -->
-</head>
-
 <?php 
   include('includes/nav.inc.php'); // include global css, javascript, end the head and open the body
 ?>
@@ -23,16 +20,16 @@
 		</div>
 		<div class="col-sm-4" style="text-align: left;">
 			<?php
-				if (isset($_GET['userID'])){
+				if(isset($_SESSION['status']) && $_SESSION['status'] == 'authorized'){
+					
 					// load user name
-					$userID = $_GET['userID'];
+					$userID = $_SESSION['userID']; 
 					$query = $dbcon->query("SELECT firstName, lastName FROM users WHERE userID = $userID");
 					$name = $query->fetch(PDO::FETCH_ASSOC);
 					echo "<p id=\"profile-name\">" . $name['firstName'] . ' ' . $name['lastName'] . "</p>";
-					 
+
 				}
 			?>
-			
 		</div>
 	</div>
 	<div class="row">
@@ -40,7 +37,17 @@
 			<p><em>Email:</em></p>
 		</div>
 		<div class="col-sm-4" style="text-align: left;">
-			<p id="profile-email">smithj@rpi.edu</p>
+			<?php
+				if(isset($_SESSION['status']) && $_SESSION['status'] == 'authorized'){
+					
+					// load user name
+					$userID = $_SESSION['userID']; 
+					$query = $dbcon->query("SELECT email FROM users WHERE userID = $userID");
+					$name = $query->fetch(PDO::FETCH_ASSOC);
+					echo "<p id=\"profile-email\">" . $name['email'] . "</p>";
+
+				}
+			?>
 		</div>
 	</div>
 	<div class="row">
