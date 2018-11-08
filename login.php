@@ -21,7 +21,7 @@
         <label for="pwd">Password:</label>
         <input type="password" class="form-control" id="pwd" name="password">
       </div>
-      <button type="submit" class="btn btn-primary" name="loginSubmit">Submit</button>
+      <button type="submit" class="btn btn-primary" name="loginSubmit">Log In</button>
     </form>
       <br>
       <button type="submit" class="btn btn-default" data-toggle="modal" data-target="#accountModal">Create Account</button>
