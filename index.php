@@ -31,6 +31,27 @@
   <div class="container-fluid text-center event-table" id="event-holder">
     <h2>Events</h2>
     <br>
+    <div class="col-sm-4">
+      <h4>Event 5</h4>
+      <p>Where: Student Union 3602</p>
+      <p>When: Tues, Dec 3</p>
+      <button type="button" class="btn btn-info">Save</button>
+      <button type="button" class="btn" data-toggle="modal" data-target="#eventModal1">View</button>
+    </div>
+    <div class="col-sm-4">
+      <h4>Event 5</h4>
+      <p>Where: Student Union 3602</p>
+      <p>When: Tues, Dec 3</p>
+      <button type="button" class="btn btn-info">Save</button>
+      <button type="button" class="btn" data-toggle="modal" data-target="#eventModal1">View</button>
+    </div>
+    <div class="col-sm-4">
+      <h4>Event 5</h4>
+      <p>Where: Student Union 3602</p>
+      <p>When: Tues, Dec 3</p>
+      <button type="button" class="btn btn-info">Save</button>
+      <button type="button" class="btn" data-toggle="modal" data-target="#eventModal1">View</button>
+    </div>
   </div>
 
   <!-- Modal -->
