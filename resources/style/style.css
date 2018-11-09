@@ -18,7 +18,7 @@
       border-radius: 0;
   }
 
-  .navbar li a, .navbar .navbar-brand {
+  .navbar li a, .navbar li, .navbar .navbar-brand {
       color: #fff !important;
   }
 
@@ -61,4 +61,12 @@
 
   .event-btn {
     margin-right: 5px;
+  }
+
+  #welcome {
+    color: #fff !important;
+    margin-top: 16px;
+    margin-left: 25px;
+    font-weight: bold;
+
   }

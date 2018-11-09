@@ -11,7 +11,7 @@
 </head>
 
 <?php 
-  include('includes/nav.inc.php'); // include global css, javascript, end the head and open the body
+  include('includes/nav2.inc.php'); // include global css, javascript, end the head and open the body
 ?>
 
   <div id="saved-events" class="container-fluid text-center event-table page">
