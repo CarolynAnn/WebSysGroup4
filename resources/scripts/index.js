@@ -1,14 +1,20 @@
 
 function loadEvents(){
     $.ajax({
-            type: "Post",
-            url: "get_events.php",
-            success: function(data, status){ //dynamically add events list to DOM
-              data = JSON.parse(data);
-              data = data["Events"];
-              var length = data.length;
-              var newRow;
-              for(var i = 0; i < length; i++){
+        type: "Post",
+        url: "get_events.php",
+        success: function(data, status){ //dynamically add events list to DOM
+            data = JSON.parse(data);
+            data = data["Events"];
+            var length = data.length;
+            var newRow;
+            if(length == 0){
+                $("#loading-home").text("No events found.");
+            }
+            if(length > 0){
+                $("#loading-home").hide();
+            }
+            for(var i = 0; i < length; i++){
                 var newEvent = document.createElement("div");
                 newEvent.className = "col-sm-4";
                 newEvent.id = "event"+data[i][0]; //Event ID
@@ -77,12 +83,12 @@ function loadEvents(){
 
                 //Append newEvent element to newRow
                 newRow.appendChild(newEvent);
-              }
-
-            },error: function(msg) {
-                // There was a problem
-                alert("There was a problem: " + msg.status + " " + msg.statusText);
             }
+
+        },error: function(msg) {
+            // There was a problem
+            alert("There was a problem: " + msg.status + " " + msg.statusText);
+        }
     });
 }
 
