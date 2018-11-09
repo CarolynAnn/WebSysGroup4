@@ -61,9 +61,56 @@
 	<br>
 	<div class="row">
 		<div class="col-sm-12">
-			<a class="btn btn-primary" href="editProf.php">Edit</a>
+			<button type="button" class="btn" data-toggle="modal" data-target="#profileModal">Edit</button>
 		</div>
 	</div>	
 </div>
+
+  <!-- Modal -->
+  <div id="profileModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Edit Profile</h4>
+        </div>
+        <div class="modal-body">
+          <div>
+            <form action="" method="POST">
+              <div class="form-group">
+                <label for="name">First Name:</label>
+                <input type="name" class="form-control" id="login-fname" name="firstName">
+              </div>
+              <div class="form-group">
+                <label for="name">Last Name:</label>
+                <input type="name" class="form-control" id="login-lname" name="lastName">
+              </div>
+              <div class="form-group">
+                <label for="email">Email address:</label>
+                <input type="email" class="form-control" id="login-email" name="email">
+              </div>
+              <div class="form-group">
+                <label for="pwd">Old Password:</label>
+                <input type="password" class="form-control" id="login-pwd" name="password">
+              </div>
+              <div class="form-group">
+                <label for="pwd">Password:</label>
+                <input type="password" class="form-control" id="login-pwd" name="password">
+              </div>
+              <div class="form-group">
+                <label for="cpwd">Confirm Password:</label>
+                <input type="password" class="form-control" id="login-cpwd" name="passwordc">
+              </div>
+              <button type="submit" class="btn btn-default" name="saveSubmit">Save Changes</button>
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
 
 </body>
