@@ -1,5 +1,11 @@
 <?php
    
+    $servername = "localhost";
+	$username = "root";
+	$password = "password";
+	$dbname = "rpi_events";
+
+
     // Create connection
     $conn = new mysqli($servername, $username, $password, $dbname);
     // Check connection
