@@ -31,6 +31,7 @@
   <div class="container-fluid text-center event-table" id="event-holder">
     <h2>Events</h2>
     <br>
+    <h4 id="loading-home">Loading...</h4>
   </div>
 
   <!-- Modal -->
