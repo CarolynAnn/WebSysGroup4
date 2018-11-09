@@ -1,4 +1,4 @@
-<?php require_once('config.php');
+<?php
 
 // Include seperate function files
 include('functions_user.php');
