@@ -24,11 +24,16 @@
     $date = isset( $_POST['date'] ) ? make_safe($_POST['date']) : '';
     $loc = isset( $_POST['location'] ) ? make_safe($_POST['location']) : '';
     $desc = isset( $_POST['description'] ) ? make_safe($_POST['description']) : '';
+    $userID = $_SESSION['userID'];
+    $query = $dbcon->query("SELECT * FROM `users` WHERE `userID` = $userID");
+    $user = $query->fetch(PDO::FETCH_ASSOC); 
+    $email = $user['email'];
+
     if (!$title || !$start || !$end || !$date || !$loc || !$desc){
       echo "<script>alert('Empty field');</script>";
     }else{
        echo "<script>alert('success');</script>";
-       $dbcon->exec("INSERT INTO `events` (`title`, `date`, `start`, `end`, `location`, `description`, `owner`) VALUES ('$title', '$date', '$start', '$end', '$loc', '$desc', " . $_SESSION['userID'] . ")");
+       $dbcon->exec("INSERT INTO `events` (`title`, `date`, `start`, `end`, `location`, `description`, `owner`) VALUES ('$title', '$date', '$start', '$end', '$loc', '$desc', '$email')");
        
        header('Location: my_events.php');
     }
