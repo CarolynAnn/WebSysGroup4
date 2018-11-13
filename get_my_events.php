@@ -1,9 +1,9 @@
 <?php
    
     $servername = "localhost";
-	$username = "root";
-	$password = "watermeloncup";
-	$dbname = "rpi_events";
+    $username = "root";
+    $password = "watermeloncup";
+    $dbname = "rpi_events";
 
 
     // Create connection
@@ -12,7 +12,7 @@
     if ($conn->connect_error) {
        die("Connection failed: " . $conn->connect_error);
     } 
-    $sql = "SELECT * FROM `events` ORDER BY `date`, `start` ASC";
+    $sql = "SELECT * FROM `events` WHERE `owner` = '2' ORDER BY `date`, `start` ASC";
 
     $events = [];
     $result = $conn->query($sql);

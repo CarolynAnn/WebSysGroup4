@@ -18,8 +18,8 @@
 					$query = $dbcon->query("SELECT * FROM `users` WHERE userID = " . $_SESSION['userID']);
 					$user = $query->fetch(PDO::FETCH_ASSOC);
 					echo "<li><a href=\"profile.php\">PROFILE</a></li>"; 
-	          		echo "<li><a href=\"events.php\">MY EVENTS</a></li>";
-	          		echo "<li><a href=\"schedule.php\">SAVED</a></li>";
+	          		echo "<li><a href=\"my_events.php\">MY EVENTS</a></li>";
+	          		echo "<li><a href=\"saved.php\">SAVED</a></li>";
 					echo "<li><a href = \"index.php?status=logout\">LOGOUT</a></li>"; 
 					echo "<li id=\"welcome\">Welcome, " . $user['firstName'] . "</li>";
 				}

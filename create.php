@@ -30,7 +30,7 @@
        echo "<script>alert('success');</script>";
        $dbcon->exec("INSERT INTO `events` (`title`, `date`, `start`, `end`, `location`, `description`, `owner`) VALUES ('$title', '$date', '$start', '$end', '$loc', '$desc', " . $_SESSION['userID'] . ")");
        
-       header('Location: events.php');
+       header('Location: my_events.php');
     }
 
   }
