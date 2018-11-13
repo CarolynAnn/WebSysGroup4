@@ -2,7 +2,7 @@
    
     $servername = "localhost";
 	$username = "root";
-	$password = "watermeloncup";
+	$password = "password";
 	$dbname = "rpi_events";
 
 
