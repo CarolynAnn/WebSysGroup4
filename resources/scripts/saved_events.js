@@ -2,17 +2,17 @@
 function loadEvents(){
     $.ajax({
         type: "Post",
-        url: "get_events.php",
+        url: "get_saved_events.php",
         success: function(data, status){ //dynamically add events list to DOM
             data = JSON.parse(data);
             data = data["Events"];
             var length = data.length;
             var newRow;
             if(length == 0){
-                $("#loading-home").text("No events found.");
+                $("#loading-saved-events").text("No events found.");
             }
             if(length > 0){
-                $("#loading-home").hide();
+                $("#loading-saved-events").hide();
             }
             for(var i = 0; i < length; i++){
                 var newEvent = document.createElement("div");
@@ -45,9 +45,9 @@ function loadEvents(){
                 //Save Event Button
                 var save = document.createElement("button");
                 save.type = "button";
-                save.className = "btn btn-success event-btn";
-                save.id = i + "Save";
-                save.innerHTML = "Save";
+                save.className = "btn btn-danger event-btn";
+                save.id = i + "Remove";
+                save.innerHTML = "Remove";
 
                 //TODO: When Save button clicked....
                 save.addEventListener("click", function(){
@@ -57,10 +57,10 @@ function loadEvents(){
                 var view = document.createElement("button");
                 view.type = "button";
                 view.className = "btn";
-                view.id = i + "View";
+                view.id = i + "View2";
                 view.innerHTML = "View";
                 view.setAttribute("data-toggle", "modal");
-                view.setAttribute("data-target", "#eventModal");
+                view.setAttribute("data-target", "#eventModal-SavedEvents");
 
                 // When View button clicked, populate modal with correct info
                 view.addEventListener("click", function(){
@@ -78,7 +78,7 @@ function loadEvents(){
                 if(i%3 == 0){
                     newRow = document.createElement("div");
                     newRow.className = "row rowEvents";
-                    $("#event-holder").append(newRow);
+                    $("#saved-events").append(newRow);
                 }
 
                 //Append newEvent element to newRow
@@ -108,13 +108,13 @@ function setModal(data, i){
     var d = new Date(data[2]+"T"+data[3]);
     var dateStr = formatDate(d);
     //Insert data into modal
-    $("#event-modal-title").html(data[1]);
-    $("#event-modal-date").html(dateStr);
-    $("#event-modal-start").html(data[3].substr(0,5));
-    $("#event-modal-end").html(data[4].substr(0,5));
-    $("#event-modal-loc").html(data[5]);
-    $("#event-modal-owner").html(data[7]);
-    $("#event-modal-desc").html(data[6]);
+    $("#event-modal-title2").html(data[1]);
+    $("#event-modal-date2").html(dateStr);
+    $("#event-modal-start2").html(data[3].substr(0,5));
+    $("#event-modal-end2").html(data[4].substr(0,5));
+    $("#event-modal-loc2").html(data[5]);
+    $("#event-modal-owner2").html(data[7]);
+    $("#event-modal-desc2").html(data[6]);
 }
 
 //when DOM loads
