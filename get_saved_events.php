@@ -1,11 +1,10 @@
 <?php
-
     session_start();
     $servername = "localhost";
-
     $username = "root";
     $password = "password";
     $dbname = "rpi_events";
+
 
     // Create connection
     $conn = new mysqli($servername, $username, $password, $dbname);
@@ -14,17 +13,8 @@
        die("Connection failed: " . $conn->connect_error);
     } 
 
-    // Get user email (owner)
-    $userID = $_SESSION['userID'];
-    $query = $conn->query("SELECT * FROM `users` WHERE `userID` = $userID");
-    $email = "";
-    while($user = $query->fetch_assoc()){
-        $email = $user['email'];
-    }
-
-    // Get all events where current user is owner
-    $sql = "SELECT * FROM events e WHERE e.owner = '$email' ORDER BY `date`, `start` ASC";
-
+    // Get all events that current user has saved/is attending
+    $sql = "SELECT e.id, e.title, e.date, e.start, e.end, e.location, e.description, e.owner FROM attendants a , events e WHERE a.eid = e.id AND a.uid =" . $_SESSION['userID'] . " ORDER BY `date`, `start` ASC";
     $events = [];
     $result = $conn->query($sql);
     //Loop through results, get info from each row
@@ -37,7 +27,6 @@
       }
     }
     /* close result set */
-    $query->close();
     $result->close();
     $final_arr["Events"] = $events;
     //Return json data

@@ -45,9 +45,9 @@ function loadEvents(){
                 //Save Event Button
                 var save = document.createElement("button");
                 save.type = "button";
-                save.className = "btn btn-success event-btn";
-                save.id = i + "Save";
-                save.innerHTML = "Save";
+                save.className = "btn btn-info event-btn";
+                save.id = i + "Edit";
+                save.innerHTML = "Edit";
 
                 //TODO: When Save button clicked....
                 save.addEventListener("click", function(){
@@ -57,10 +57,10 @@ function loadEvents(){
                 var view = document.createElement("button");
                 view.type = "button";
                 view.className = "btn";
-                view.id = i + "View";
+                view.id = i + "View1";
                 view.innerHTML = "View";
                 view.setAttribute("data-toggle", "modal");
-                view.setAttribute("data-target", "#eventModal");
+                view.setAttribute("data-target", "#eventModal-MyEvents");
 
                 // When View button clicked, populate modal with correct info
                 view.addEventListener("click", function(){
@@ -101,17 +101,20 @@ function formatDate(date){
 
 /*Upon clicking "View" button for an event, populate modal with respective info for that specific event*/
 function setModal(data, i){
-    i = i[0];
+    //Extract index of relevant data from i (i = button id)
+    var index = i.indexOf("View");
+    i = i.substr(0,index);
     data = data[i];
     var d = new Date(data[2]+"T"+data[3]);
     var dateStr = formatDate(d);
-    $("#event-modal-title").html(data[1]);
-    $("#event-modal-date").html(dateStr);
-    $("#event-modal-start").html(data[3].substr(0,5));
-    $("#event-modal-end").html(data[4].substr(0,5));
-    $("#event-modal-loc").html(data[5]);
-    $("#event-modal-owner").html(data[7]);
-    $("#event-modal-desc").html(data[6]);
+    //Insert data into modal
+    $("#event-modal-title1").html(data[1]);
+    $("#event-modal-date1").html(dateStr);
+    $("#event-modal-start1").html(data[3].substr(0,5));
+    $("#event-modal-end1").html(data[4].substr(0,5));
+    $("#event-modal-loc1").html(data[5]);
+    $("#event-modal-owner1").html(data[7]);
+    $("#event-modal-desc1").html(data[6]);
 }
 
 //when DOM loads

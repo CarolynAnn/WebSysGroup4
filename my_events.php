@@ -17,14 +17,12 @@
   <div id="my-events" class="container-fluid text-center event-table page">
     <h2>My Events</h2>
     <a class="btn btn-primary" href="create.php">Create</a>
-    <!-- <button type="button" class="btn btn-primary">Create</button> -->
-    <!-- <h4>Events Created by You</h4> -->
     <br><br><br>
     <h4 id="loading-my-events">Loading...</h4>
   </div>
 
   <!-- Modal -->
-  <div id="eventModal1" class="modal fade" role="dialog">
+  <div id="eventModal-MyEvents" class="modal fade" role="dialog">
     <div class="modal-dialog">
       <!-- Modal content-->
       <div class="modal-content">
