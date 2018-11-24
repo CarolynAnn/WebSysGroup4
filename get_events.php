@@ -1,6 +1,6 @@
 <?php
    
-    $servername = "localhost";
+    $servername = "localhost:3366";
 	$username = "root";
 	$password = "password";
 	$dbname = "rpi_events";

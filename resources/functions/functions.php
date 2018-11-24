@@ -9,7 +9,7 @@ function db_connect($select_db = true) {
 	
 	$db_config = array(
 		'name'    =>  'rpi_events',
-		'host'    =>  'localhost',
+		'host'    =>  'localhost:3366',
 		'user'    =>  'root',
 		'pass'	  =>  'password'
 	);

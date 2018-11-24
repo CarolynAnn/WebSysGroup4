@@ -17,7 +17,7 @@
 
   <div class="jumbotron text-center">
     <h1>RPI Events</h1> 
-    <p>Bringing the community together by sharing events</p> 
+    <p>Bringing the community together through shared events</p> 
     <form class="form-inline">
       <div class="input-group">
         <input type="email" class="form-control" size="50" placeholder="Search" required>
