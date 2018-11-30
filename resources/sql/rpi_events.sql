@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 08, 2018 at 07:23 PM
+-- Generation Time: Nov 30, 2018 at 06:08 PM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.9
 
@@ -29,9 +29,8 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `attendants` (
-  `id` int(11) NOT NULL,
-  `firstname` varchar(255) NOT NULL,
-  `lastname` varchar(255) NOT NULL
+  `eid` int(11) NOT NULL,
+  `uid` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -56,7 +55,9 @@ CREATE TABLE `events` (
 --
 
 INSERT INTO `events` (`id`, `title`, `date`, `start`, `end`, `location`, `description`, `owner`) VALUES
-(1, 'Study group', '2018-11-07', '10:30:00', '12:00:00', 'Folsom Library ', 'Join us for a bio study group.', '1');
+(5, 'Study group', '2018-10-30', '10:30:00', '11:00:00', 'DCC', 'Study with us', 'jdoe@rpi.edu'),
+(6, 'One on One with Instructor and TA', '2018-11-15', '11:53:00', '11:59:00', 'Lally 102', 'Project updates ', 'munasin@rpi.edu'),
+(7, 'Do Programming Languages', '2018-12-01', '20:00:00', '21:00:00', 'Library', 'Prog Lang is hard. ', 'jdoe@rpi.edu');
 
 -- --------------------------------------------------------
 
@@ -79,11 +80,19 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`userID`, `username`, `password`, `salt`, `email`, `firstName`, `lastName`) VALUES
-(1, '', '33b48475d713da7f6d07219ffe5e6e529ba7745cf37983b0d3f06d628c86593a', 'af95a6849f70cab4ced98638ac94d6680bf667530da22cf6918252de2f2965de', 'jdoe@rpi.edu', 'John', 'Doe');
+(1, '', '33b48475d713da7f6d07219ffe5e6e529ba7745cf37983b0d3f06d628c86593a', 'af95a6849f70cab4ced98638ac94d6680bf667530da22cf6918252de2f2965de', 'jdoe@rpi.edu', 'John', 'Doe'),
+(2, '', '8e8fff61c358a31b148dd5756b8ba738fd6fd957867440b384fd97c78d5671f0', '68710e3eb07ab52af28c54b200cda23bbcb76e47d4fcc2ccbb6c4275c7186acc', 'munasin@rpi.edu', 'Thilanka', 'Munasinghe');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `attendants`
+--
+ALTER TABLE `attendants`
+  ADD KEY `uid` (`uid`),
+  ADD KEY `eid` (`eid`);
 
 --
 -- Indexes for table `events`
@@ -105,13 +114,24 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `events`
 --
 ALTER TABLE `events`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `attendants`
+--
+ALTER TABLE `attendants`
+  ADD CONSTRAINT `attendants_ibfk_1` FOREIGN KEY (`uid`) REFERENCES `users` (`userID`),
+  ADD CONSTRAINT `attendants_ibfk_2` FOREIGN KEY (`eid`) REFERENCES `events` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
