@@ -42,6 +42,9 @@ if(isset($_POST['registerSubmit'])) {
     if (!$firstName || !$lastName || !$email || !$password) {
         echo "<script>alert( 'All fields must be filled in' );</script>";
     }
+    else if (!valid_rpi($email)){
+        echo "<script>alert('Invalid email. Please provide valid RPI email address');</script>";
+    }
 	else if (user_exists($email)) {
         echo "<script>alert( 'A user with that email already exists' );</script>";
     }

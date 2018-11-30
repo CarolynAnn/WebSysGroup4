@@ -78,4 +78,13 @@ function user_exists($email) {
         return false;
 }
 
+function valid_rpi($email){
+    $rpi = "@rpi.edu";
+    if (strpos($email, $rpi) !== false){
+        return true; 
+    }else{
+        return false; 
+    }
+}
+
 ?>
