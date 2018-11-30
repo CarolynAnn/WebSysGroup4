@@ -1,18 +1,31 @@
-<?php 
+<?php
   include('includes/init.inc.php'); // include the DOCTYPE and opening tags
 ?>
 <title>RPI Events</title>
 
-<?php 
+<?php
   include('includes/head.inc.php'); // include global css, javascript, end the head and open the body
 ?>
 
 <script type="text/javascript" src="resources/scripts/saved_events.js"></script>
 </head>
 
-<?php 
+<?php
   include('includes/nav2.inc.php'); // include global css, javascript, end the head and open the body
 ?>
+
+<?php
+
+    if ( isset($_POST['RemoveEvent']) ) {
+      if( $_POST['RemoveEvent'] != "-1" ) {
+        $EID = $_POST['RemoveEvent'];
+        $UID = $_SESSION['userID'];
+        $dbcon->exec("DELETE FROM `attendants` WHERE `eid` = '$EID' AND `uid` = '$UID'");
+        $_POST['delete'] = "-1";
+      }
+    }
+?>
+
 
   <div id="saved-events" class="container-fluid text-center event-table page">
     <h2>Events Saved by You</h2>
@@ -80,7 +93,6 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-danger">Delete</button>
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
       </div>

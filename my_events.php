@@ -1,18 +1,37 @@
-<?php 
+<?php
   include('includes/init.inc.php'); // include the DOCTYPE and opening tags
 ?>
 <title>RPI Events</title>
 
-<?php 
+<?php
   include('includes/head.inc.php'); // include global css, javascript, end the head and open the body
 ?>
 
 <script type="text/javascript" src="resources/scripts/my_events.js"></script>
 </head>
 
-<?php 
+<?php
   include('includes/nav2.inc.php'); // include global css, javascript, end the head and open the body
 ?>
+
+<?php
+    if ( isset($_POST['EditEvent']) ) {
+      if( $_POST['EditEvent'] != "-1" ) {
+        $EID = $_POST['EditEvent'];
+        header("Location: EditEvent.php?id=$EID");
+        $_POST['EditEvent'] = "-1";
+      }
+    }
+    if ( isset($_POST['delete']) ) {
+      if( $_POST['delete'] != "-1" ) {
+        $EID2 = $_POST['delete'];
+        $dbcon->exec("DELETE FROM `attendants` WHERE `eid` = '$EID2'");
+        $dbcon->exec("DELETE FROM `events` WHERE `id` = '$EID2'");
+        $_POST['delete'] = "-1";
+      }
+    }
+?>
+
 
   <div id="my-events" class="container-fluid text-center event-table page">
     <h2>My Events</h2>
@@ -81,8 +100,10 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-danger">Delete</button>
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <form method="post">
+            <button type="submit" name="delete" id="DeleteButton" class="btn btn-danger">Delete</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </form>
         </div>
       </div>
     </div>

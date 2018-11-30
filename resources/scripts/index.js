@@ -40,17 +40,28 @@ function loadEvents(){
                 endTime = endTime.substr(0,5);
 
                 date.appendChild(document.createTextNode("When: " + dateStr + ", " + startTime + " - " + endTime));
-                
+
                 //Create Buttons
                 //Save Event Button
-                var save = document.createElement("button");
-                save.type = "button";
-                save.className = "btn btn-success event-btn";
-                save.id = i + "Save";
-                save.innerHTML = "Save";
+
+                var save = document.createElement("form");
+                save.method = "post";
+
+                var input = document.createElement("button");
+                input.type = "submit";
+                input.className = "btn btn-success event-btn";
+                input.id = i + "Save";
+                input.innerHTML = "Save";
+                input.value = data[i][0];
+                input.name = "EVENT_ID";
+                input.formmethod="post";
+
+                save.appendChild(input);
+
 
                 //TODO: When Save button clicked....
                 save.addEventListener("click", function(){
+                  // document.getElementByID(input.id).opacity = ".2%";
                 });
 
                 //View Event Button
@@ -71,8 +82,8 @@ function loadEvents(){
                 newEvent.appendChild(title);
                 newEvent.appendChild(loc);
                 newEvent.appendChild(date);
+                save.appendChild(view);
                 newEvent.appendChild(save);
-                newEvent.appendChild(view);
 
                 //If this is 3rd event in current row, create new row for following events (i.e. only 3 events listed per row)
                 if(i%3 == 0){

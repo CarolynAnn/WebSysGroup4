@@ -1,23 +1,44 @@
-<?php 
+<?php
   include('includes/init.inc.php'); // include the DOCTYPE and opening tags
 ?>
 <title>RPI Events</title>
 
-<?php 
+<?php
   include('includes/head.inc.php'); // include global css, javascript, end the head and open the body
 ?>
 
 <script type="text/javascript" src="resources/scripts/index.js"></script>
 
 
-<?php 
+<?php
   include('includes/nav.inc.php'); // include global css, javascript, end the head and open the body
 ?>
 
+<?php
+
+  // Handle event creation
+
+  if (isset($_SESSION['userID'])) {
+    $UID = $_SESSION['userID'];
+    if (isset($_POST['EVENT_ID'])) {
+      $EvID= isset( $_POST['EVENT_ID'] ) ? make_safe($_POST['EVENT_ID']) : '';
+      $query = $dbcon->query("SELECT * FROM `users` WHERE `userID` = $UID");
+      $user = $query->fetch(PDO::FETCH_ASSOC);
+      $firstName = $user['firstName'];
+      $lastName = $user['lastName'];
+      $query = $dbcon->query("SELECT * FROM `attendants` WHERE `eid` = '$EvID' AND `uid`='$UID' ");
+      if($query->rowCount() == 0) {
+        $dbcon->exec("INSERT IGNORE INTO `attendants` (`eid`,`uid`) VALUES ('$EvID','$UID')");
+      }
+    }
+  }
+
+
+?>
 
   <div class="jumbotron text-center">
-    <h1>RPI Events</h1> 
-    <p>Bringing the community together through shared events</p> 
+    <h1>RPI Events</h1>
+    <p>Bringing the community together through shared events</p>
     <form class="form-inline">
       <div class="input-group">
         <input type="email" class="form-control" size="50" placeholder="Search" required>
@@ -95,7 +116,6 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-success">Save</button>
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
       </div>

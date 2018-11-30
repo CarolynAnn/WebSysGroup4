@@ -40,14 +40,27 @@ function loadEvents(){
                 endTime = endTime.substr(0,5);
 
                 date.appendChild(document.createTextNode("When: " + dateStr + ", " + startTime + " - " + endTime));
-                
+
                 //Create Buttons
-                //Save Event Button
-                var save = document.createElement("button");
-                save.type = "button";
-                save.className = "btn btn-info event-btn";
-                save.id = i + "Edit";
-                save.innerHTML = "Edit";
+                //Edit Event Button
+                var save = document.createElement("form");
+                save.method = "post";
+
+                var input = document.createElement("button");
+                input.type = "submit";
+                input.className = "btn btn-info event-btn";
+                input.id = i + "Edit";
+                input.innerHTML = "Edit";
+                input.value = data[i][0];
+                input.name = "EditEvent";
+                input.formmethod="post";
+
+                save.appendChild(input);
+                // var save = document.createElement("button");
+                // save.type = "button";
+                // save.className = "btn btn-info event-btn";
+                // save.id = i + "Edit";
+                // save.innerHTML = "Edit";
 
                 //TODO: When Save button clicked....
                 save.addEventListener("click", function(){
@@ -71,8 +84,8 @@ function loadEvents(){
                 newEvent.appendChild(title);
                 newEvent.appendChild(loc);
                 newEvent.appendChild(date);
+                save.appendChild(view);
                 newEvent.appendChild(save);
-                newEvent.appendChild(view);
 
                 //If this is 3rd event in current row, create new row for following events (i.e. only 3 events listed per row)
                 if(i%3 == 0){
@@ -115,6 +128,7 @@ function setModal(data, i){
     $("#event-modal-loc1").html(data[5]);
     $("#event-modal-owner1").html(data[7]);
     $("#event-modal-desc1").html(data[6]);
+    $("#DeleteButton").attr('value',data[0]);
 }
 
 //when DOM loads

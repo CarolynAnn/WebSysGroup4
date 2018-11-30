@@ -40,14 +40,29 @@ function loadEvents(){
                 endTime = endTime.substr(0,5);
 
                 date.appendChild(document.createTextNode("When: " + dateStr + ", " + startTime + " - " + endTime));
-                
+
                 //Create Buttons
                 //Save Event Button
-                var save = document.createElement("button");
-                save.type = "button";
-                save.className = "btn btn-danger event-btn";
-                save.id = i + "Remove";
-                save.innerHTML = "Remove";
+                // var save = document.createElement("button");
+                // save.type = "button";
+                // save.className = "btn btn-danger event-btn";
+                // save.id = i + "Remove";
+                // save.innerHTML = "Remove";
+                var save = document.createElement("form");
+                save.method = "post";
+
+                var input = document.createElement("button");
+                input.type = "submit";
+                input.className = "btn btn-danger event-btn";
+                input.id = i + "Remove";
+                input.innerHTML = "Remove";
+                input.value = data[i][0];
+                input.name = "RemoveEvent";
+                input.formmethod="post";
+
+                save.appendChild(input);
+
+
 
                 //TODO: When Save button clicked....
                 save.addEventListener("click", function(){
@@ -62,6 +77,8 @@ function loadEvents(){
                 view.setAttribute("data-toggle", "modal");
                 view.setAttribute("data-target", "#eventModal-SavedEvents");
 
+                save.appendChild(view);
+
                 // When View button clicked, populate modal with correct info
                 view.addEventListener("click", function(){
                     setModal(data, this.id);
@@ -72,7 +89,7 @@ function loadEvents(){
                 newEvent.appendChild(loc);
                 newEvent.appendChild(date);
                 newEvent.appendChild(save);
-                newEvent.appendChild(view);
+                // newEvent.appendChild(view);
 
                 //If this is 3rd event in current row, create new row for following events (i.e. only 3 events listed per row)
                 if(i%3 == 0){
