@@ -4,7 +4,7 @@
 global $dbcon;
 $db_config = array(
     'name'    =>  'rpi_events',
-    'host'    =>  'localhost:3366',
+    'host'    =>  'localhost',
     'user'    =>  'root',
 	'pass'	  =>  'password'
 );

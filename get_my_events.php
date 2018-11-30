@@ -1,11 +1,12 @@
 <?php
 
     session_start();
-    $servername = "localhost";
+    require 'resources\functions\config.php';
 
-    $username = "root";
-    $password = "password";
-    $dbname = "rpi_events";
+    $servername = $db_config["host"];
+    $username = $db_config["user"];
+    $password = $db_config["pass"];
+    $dbname = $db_config["name"];
 
     // Create connection
     $conn = new mysqli($servername, $username, $password, $dbname);
