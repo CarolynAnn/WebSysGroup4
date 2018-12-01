@@ -64,6 +64,7 @@
 			<button type="button" class="btn" data-toggle="modal" data-target="#profileModal">Edit</button>
 		</div>
 	</div>	
+	<div id="editError"></div> 
 </div>
 
   <!-- Modal -->
@@ -78,32 +79,45 @@
         </div>
         <div class="modal-body">
           <div>
+          	<?php
+
+          		// grab the user information to prepopulate the form
+          		$userID = $_SESSION['userID']; 
+				$query = $dbcon->query("SELECT * FROM users WHERE userID = $userID");
+				$user = $query->fetch(PDO::FETCH_ASSOC); 
+				$first = $user['firstName'];
+				$last = $user['lastName'];
+				$email = $user['email'];
+
+          	?>
             <form action="" method="POST">
               <div class="form-group">
                 <label for="name">First Name:</label>
-                <input type="name" class="form-control" id="login-fname" name="firstName">
+                <input type="name" class="form-control" id="login-fname" name="firstName" value="<?php echo $first;?>"/>
               </div>
               <div class="form-group">
                 <label for="name">Last Name:</label>
-                <input type="name" class="form-control" id="login-lname" name="lastName">
+                <input type="name" class="form-control" id="login-lname" name="lastName" value="<?php echo $last;?>"/>
               </div>
               <div class="form-group">
                 <label for="email">Email address:</label>
-                <input type="email" class="form-control" id="login-email" name="email">
+                <input type="email" class="form-control" id="login-email" name="email" value="<?php echo $email;?>"/>
               </div>
               <div class="form-group">
                 <label for="pwd">Old Password:</label>
-                <input type="password" class="form-control" id="login-pwd" name="password">
+                <input type="password" class="form-control" id="login-opwd" name="opassword">
               </div>
               <div class="form-group">
                 <label for="pwd">Password:</label>
-                <input type="password" class="form-control" id="login-pwd" name="password">
+                <input type="password" class="form-control" id="login-npwd" name="npassword">
               </div>
               <div class="form-group">
                 <label for="cpwd">Confirm Password:</label>
                 <input type="password" class="form-control" id="login-cpwd" name="passwordc">
               </div>
-              <button type="submit" class="btn btn-default" name="saveSubmit">Save Changes</button>
+              <form action="" method="POST">
+	              <button type="submit" class="btn btn-default" name="editProfile">Save Changes</button>
+	          </form>
               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </form>
           </div>

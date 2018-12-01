@@ -63,6 +63,39 @@ if(isset($_POST['registerSubmit'])) {
     }
 }
 
+if (isset($_POST['editProfile'])){
+    
+   // automatically insert the pre-populated info
+    $firstName = isset( $_POST['firstName'] ) ? make_safe($_POST['firstName']) : '';
+    $lastName = isset( $_POST['lastName'] ) ? make_safe($_POST['lastName']) : '';
+    $email = isset( $_POST['email'] ) ? make_safe($_POST['email']) : '';
+
+    // check for changed password
+    if (isset($_POST['npassword'])){
+
+        $new = $_POST['npassword'];
+        $cnew = $_POST['passwordc'];
+        $old = $_POST['opassword'];
+
+        // check that old password is correct
+        if (!validPassword($old)){
+            echo "<script>alert('Original password is incorrect');</script>";
+        }
+        // check confirm password
+        else if ($new != $cnew){
+
+            echo "<script>alert('Passwords must match');</script>";
+        }else{
+            
+            // insert changes into database
+            edit_user($firstName, $lastName, $email, $new);
+        }
+        // echo "<script>alert('password was given');</script";
+    }
+
+
+}
+
 //Log a User Out
 if(isset($_GET['status']) && $_GET['status'] == 'logout') {
 	logout();

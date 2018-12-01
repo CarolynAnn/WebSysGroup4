@@ -50,7 +50,7 @@
                 <input type="name" class="form-control" id="login-lname" name="lastName">
               </div>
               <div class="form-group">
-                <label for="email">Email address:</label>
+                <label for="email">Email address (@rpi.edu):</label>
                 <input type="email" class="form-control" id="login-email" name="email">
               </div>
               <div class="form-group">
