@@ -43,30 +43,43 @@
 
   <div class="container-fluid bg-grey form">
     <h2 class="text-center">Edit Event</h2>
+    <?php
+
+    	$eventID = $_GET['id'];
+    	global $dbcon; 
+    	$query = $dbcon->query("SELECT * FROM `events` WHERE `id` = '$eventID;'");
+		$event = $query->fetch(PDO::FETCH_ASSOC);
+		$title = $event['title'];
+		$start = $event['start'];
+		$end = $event['end'];
+		$date = $event['date'];
+		$loc = $event['location'];
+		$desc = $event['description'];
+    ?>
     <form name="create" method="POST" action="">
       <div class="form-group">
         <label for="title">Title:</label>
-        <input type="title" class="form-control" id="title" name="title">
+        <input type="title" class="form-control" id="title" name="title" value ="<?php echo $title; ?>">
       </div>
       <div class="form-group">
         <label for="start-time">Start Time <em>(Last Value for AM/PM)</em>:</label>
-        <input type="time" class="form-control" id="start-time" name="start-time">
+        <input type="time" class="form-control" id="start-time" name="start-time" value ="<?php echo $start; ?>">
       </div>
       <div class="form-group">
         <label for="end-time">End Time <em>(Last Value for AM/PM)</em>:</label>
-        <input type="time" class="form-control" id="end-time" name="end-time">
+        <input type="time" class="form-control" id="end-time" name="end-time" value ="<?php echo $end; ?>">
       </div>
       <div class="form-group">
         <label for="date">Date:</label>
-        <input type="date" class="form-control" id="date" name="date">
+        <input type="date" class="form-control" id="date" name="date" value ="<?php echo $date; ?>">
       </div>
       <div class="form-group">
         <label for="loc">Location:</label>
-        <input type="location" class="form-control" id="location" name="location">
+        <input type="location" class="form-control" id="location" name="location" value ="<?php echo $loc; ?>">
       </div>
       <div class="form-group">
         <label for="desc">Description:</label>
-        <textarea class="form-control" id="description" name="description" placeholder="Description" rows="5"></textarea>
+        <textarea class="form-control" id="description" name="description"  rows="5"> <?php echo $desc; ?> </textarea>
       </div>
 
       <button type="submit" class="btn btn-default" name="createSubmit">Change</button>
