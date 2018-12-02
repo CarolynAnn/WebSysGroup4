@@ -31,12 +31,29 @@
     if (!$title || !$start || !$end || !$date || !$loc || !$desc){
       echo "<script>alert('Empty field');</script>";
     }else{
-       echo "<script>alert('success');</script>";
-       $EvID = $_GET['id'];
-       $dbcon->exec("UPDATE `events` SET `title`='$title',`date`='$date',`start`='$start',`end`='$end', `location`='$loc', `description`='$desc', `owner`='$email' WHERE `id` = '$EvID'");
-       header('Location: my_events.php');
+      if($date < date("Y-m-d")){
+         echo "<script>alert('The date you entered already passed!');</script>";
+      }
+      else if ($date == date("Y-m-d")) {
+        if($start <= date('H:i')){
+           echo "<script>alert('The start time you entered already passed!');</script>";
+        }
+        else if($end <= $start){
+          echo "<script>alert('The end time occurs before the start time!');</script>";
+        }
+      }
+      else {
+        if($end <= $start){
+          echo "<script>alert('The end time occurs before the start time!');</script>";
+        }
+        else {
+          echo "<script>alert('success');</script>";
+          $EvID = $_GET['id'];
+          $dbcon->exec("UPDATE `events` SET `title`='$title',`date`='$date',`start`='$start',`end`='$end', `location`='$loc', `description`='$desc', `owner`='$email' WHERE `id` = '$EvID'");
+          header('Location: my_events.php');
+      }
+     }
     }
-
   }
 
 ?>
@@ -46,7 +63,7 @@
     <?php
 
     	$eventID = $_GET['id'];
-    	global $dbcon; 
+    	global $dbcon;
     	$query = $dbcon->query("SELECT * FROM `events` WHERE `id` = '$eventID;'");
 		$event = $query->fetch(PDO::FETCH_ASSOC);
 		$title = $event['title'];
