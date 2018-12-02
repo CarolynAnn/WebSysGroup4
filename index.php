@@ -41,10 +41,13 @@
     <p>Bringing the community together through shared events</p>
     <form class="form-inline">
       <div class="input-group">
-        <input type="email" class="form-control" size="50" placeholder="Search" required>
-        <div class="input-group-btn">
-          <button type="button" class="btn btn-danger">Search</button>
-        </div>
+        <form  method="post" class="input-group-btn" action ="" id="search-form">
+          
+          <input name ="search-bar" id="search-bar" type="text" class="form-control" size="50" placeholder="Search" required>
+          <span class="input-group-btn">
+            <input name="search" id="search" value="Search" type="submit" onclick="isEmpty()" class="btn btn-danger">
+          </span>
+        </form> 
       </div>
     </form>
   </div>

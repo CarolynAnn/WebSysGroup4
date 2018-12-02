@@ -1,8 +1,15 @@
 
-function loadEvents(){
+function loadEvents() {
+    let get_data = new URLSearchParams(document.location.search);
+    let search_query = get_data.get("search-bar");
+    let search_category = get_data.get("search-category");
     $.ajax({
-        type: "Post",
+        type: "post",
         url: "get_events.php",
+        data: {
+            "search-bar": search_query,
+            "search-category": search_category
+        },
         success: function(data, status){ //dynamically add events list to DOM
             data = JSON.parse(data);
             data = data["Events"];
@@ -126,6 +133,16 @@ function setModal(data, i){
     $("#event-modal-loc").html(data[5]);
     $("#event-modal-owner").html(data[7]);
     $("#event-modal-desc").html(data[6]);
+}
+
+
+function isEmpty() {
+    var x;
+    x = document.getElementById("search-bar").value;
+    if (x == "") {
+        return false;
+    };
+
 }
 
 //when DOM loads

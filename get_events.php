@@ -13,7 +13,13 @@
     if ($conn->connect_error) {
        die("Connection failed: " . $conn->connect_error);
     } 
-    $sql = "SELECT * FROM `events` ORDER BY `date`, `start` ASC";
+    if (($_POST["search-bar"])!=null) {
+        $text = $_POST["search-bar"];
+        $sql = "SELECT * FROM `events` WHERE `title` like '%{$text}%' ORDER BY `date`, `start` ASC";
+    } else {
+        $sql = "SELECT * FROM `events` ORDER BY `date`, `start` ASC";
+    }
+    
 
     $events = [];
     $result = $conn->query($sql);
