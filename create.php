@@ -1,20 +1,20 @@
-<?php 
+<?php
   include('includes/init.inc.php'); // include the DOCTYPE and opening tags
 ?>
 <title>RPI Events</title>
 
-<?php 
+<?php
   include('includes/head.inc.php'); // include global css, javascript, end the head and open the body
 ?>
 
 <!-- <script type="text/javascript" src="lab4.js"></script> -->
 </head>
 
-<?php 
+<?php
   include('includes/nav2.inc.php'); // include global css, javascript, end the head and open the body
 ?>
 <?php
-  
+
   // Handle event creation
   if (isset($_POST['createSubmit'])) {
 
@@ -26,16 +26,33 @@
     $desc = isset( $_POST['description'] ) ? make_safe($_POST['description']) : '';
     $userID = $_SESSION['userID'];
     $query = $dbcon->query("SELECT * FROM `users` WHERE `userID` = $userID");
-    $user = $query->fetch(PDO::FETCH_ASSOC); 
+    $user = $query->fetch(PDO::FETCH_ASSOC);
     $email = $user['email'];
 
     if (!$title || !$start || !$end || !$date || !$loc || !$desc){
       echo "<script>alert('Empty field');</script>";
     }else{
-       echo "<script>alert('success');</script>";
-       $dbcon->exec("INSERT INTO `events` (`title`, `date`, `start`, `end`, `location`, `description`, `owner`) VALUES ('$title', '$date', '$start', '$end', '$loc', '$desc', '$email')");
-       
-       header('Location: my_events.php');
+      if($date < date("Y-m-d")){
+         echo "<script>alert('The date you entered already passed!');</script>";
+      }
+      else if ($date == date("Y-m-d")) {
+        if($start <= date('H:i')){
+           echo "<script>alert('The start time you entered already passed!');</script>";
+        }
+        else if($end <= $start){
+          echo "<script>alert('The end time occurs before the start time!');</script>";
+        }
+      }
+      else {
+        if($end <= $start){
+          echo "<script>alert('The end time occurs before the start time!');</script>";
+        }
+        else {
+          echo "<script>alert('success');</script>";
+          $dbcon->exec("INSERT INTO `events` (`title`, `date`, `start`, `end`, `location`, `description`, `owner`) VALUES ('$title', '$date', '$start', '$end', '$loc', '$desc', '$email')");
+          header('Location: my_events.php');
+      }
+     }
     }
 
   }
@@ -75,7 +92,3 @@
   </div>
 
 </body>
-
-
-
-
