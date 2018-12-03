@@ -13,9 +13,15 @@
     if ($conn->connect_error) {
        die("Connection failed: " . $conn->connect_error);
     } 
-    if (($_POST["search-bar"])!=null) {
+    if (($_POST["search-bar"]) != null) {
         $text = $_POST["search-bar"];
-        $sql = "SELECT * FROM `events` WHERE `title` like '%{$text}%' ORDER BY `date`, `start` ASC";
+        $category = $_POST["search-category"];
+        if($category == "show-all") {
+            $sql = "SELECT * FROM `events` WHERE`title`like'%{$text}%'OR`date`like'%{$text}%'OR`start`like'%{$text}%'OR`end`like'%{$text}%'OR`location`like'%{$text}%' ORDER BY `date`, `start` ASC";
+        }
+        else {
+            $sql = "SELECT * FROM `events` WHERE `{$category}` like '%{$text}%' ORDER BY `date`, `start` ASC";
+        } 
     } else {
         $sql = "SELECT * FROM `events` ORDER BY `date`, `start` ASC";
     }

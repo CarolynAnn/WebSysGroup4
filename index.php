@@ -41,12 +41,19 @@
     <p>Bringing the community together through shared events</p>
     <form class="form-inline">
       <div class="input-group">
-        <form  method="post" class="input-group-btn" action ="" id="search-form">
-          
+        <form  method="get" action ="/index.php" id="search-form">
+          <div class="btn-group">
+          <select name="search-category" class="form-control">
+            <option value="show-all">Search All</option>
+            <option value="title">Title</option>
+            <option value="date">Date (mm-dd)</option>
+            <option value="start">Start Time</option>
+            <option value="end">End Time</option>
+            <option value="location">Location</option>
+          </select>
           <input name ="search-bar" id="search-bar" type="text" class="form-control" size="50" placeholder="Search" required>
-          <span class="input-group-btn">
-            <input name="search" id="search" value="Search" type="submit" onclick="isEmpty()" class="btn btn-danger">
-          </span>
+          <input name="search" id="search" value="Search" type="submit" onclick="isEmpty()" class="btn btn-danger">
+          </div>
         </form> 
       </div>
     </form>
