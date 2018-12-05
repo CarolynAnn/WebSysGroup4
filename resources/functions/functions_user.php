@@ -1,5 +1,6 @@
 <?php 
 
+// Edit a user profile by updating contents in database
 function edit_user($firstName, $lastName, $email, $password){
 
     global $dbcon; 
@@ -77,6 +78,7 @@ function logout() {
     session_destroy();
 }
 
+// checks whether user already exists
 function user_exists($email) {
     global $dbcon;
 
@@ -91,8 +93,11 @@ function user_exists($email) {
         return false;
 }
 
+// checks whether email is a valid rpi email
 function valid_rpi($email){
     $rpi = "@rpi.edu";
+
+    // check that rpi is a substring in email
     if (strpos($email, $rpi) !== false){
         return true; 
     }else{
@@ -100,6 +105,7 @@ function valid_rpi($email){
     }
 }
 
+// checks whether a given password is correct
 function validPassword($password){
 
     global $dbcon; 

@@ -11,6 +11,7 @@
   include('includes/nav2.inc.php'); // include global css, javascript, end the head and open the body
 ?>
 
+  <!-- Login form section -->
   <div class="form">
     <form name="login" action="" method="POST">
       <div class="form-group">
@@ -28,7 +29,7 @@
   </div>
 
 
-  <!-- Modal -->
+  <!-- Modal for create user -->
   <div id="accountModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
 

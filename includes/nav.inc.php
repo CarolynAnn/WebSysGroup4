@@ -13,6 +13,7 @@
 	          <li><a href="index.php">HOME</a></li>
 
 	          <?php
+	          	// load the navigation bar only if logged in
 				if(isset($_SESSION['status']) && $_SESSION['status'] == 'authorized') {
 					$query = $dbcon->query("SELECT * FROM `users` WHERE userID = " . $_SESSION['userID']);
 					$user = $query->fetch(PDO::FETCH_ASSOC);

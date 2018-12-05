@@ -7,7 +7,6 @@
   include('includes/head.inc.php'); // include global css, javascript, end the head and open the body
 ?>
 
-<!-- <script type="text/javascript" src="lab4.js"></script> -->
 </head>
 
 <?php
@@ -18,6 +17,7 @@
   // Handle event creation
   if (isset($_POST['createSubmit'])) {
 
+    // grab all content from form
     $title = isset( $_POST['title'] ) ? make_safe($_POST['title']) : '';
     $start = isset( $_POST['start-time'] ) ? make_safe($_POST['start-time']) : '';
     $end = isset( $_POST['end-time'] ) ? make_safe($_POST['end-time']) : '';
@@ -29,9 +29,12 @@
     $user = $query->fetch(PDO::FETCH_ASSOC);
     $email = $user['email'];
 
+    // make sure all form entries are filled in 
     if (!$title || !$start || !$end || !$date || !$loc || !$desc){
       echo "<script>alert('Empty field');</script>";
     }else{
+
+      // validate date and time
       if($date < date("Y-m-d")){
          echo "<script>alert('The date you entered already passed!');</script>";
       }
@@ -48,6 +51,8 @@
           echo "<script>alert('The end time occurs before the start time!');</script>";
         }
         else {
+
+          // insert successful event into database
           echo "<script>alert('success');</script>";
           $dbcon->exec("INSERT INTO `events` (`title`, `date`, `start`, `end`, `location`, `description`, `owner`) VALUES ('$title', '$date', '$start', '$end', '$loc', '$desc', '$email')");
           header('Location: my_events.php');
@@ -59,6 +64,7 @@
 
 ?>
 
+  <!-- Form for creating an event -->
   <div class="container-fluid bg-grey form">
     <h2 class="text-center">Create</h2>
     <form name="create" method="POST" action="">

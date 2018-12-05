@@ -14,15 +14,17 @@
 <div id="my-profile" class="container-fluid text-center page">
 	<h2>My Profile</h2>
 	<br>
+
+	<!-- Display section for profile -->
 	<div class="row">
 		<div class="col-sm-6" style="text-align: right;">
 			<p><em>Name:</em></p>
 		</div>
+
+		<!-- Render first and last name from database -->
 		<div class="col-sm-4" style="text-align: left;">
 			<?php
 				if(isset($_SESSION['status']) && $_SESSION['status'] == 'authorized'){
-					
-					// load user name
 					$userID = $_SESSION['userID']; 
 					$query = $dbcon->query("SELECT firstName, lastName FROM users WHERE userID = $userID");
 					$name = $query->fetch(PDO::FETCH_ASSOC);
@@ -32,15 +34,16 @@
 			?>
 		</div>
 	</div>
+
 	<div class="row">
 		<div class="col-sm-6" style="text-align: right;">
 			<p><em>Email:</em></p>
 		</div>
+		<!-- Render email from database -->
 		<div class="col-sm-4" style="text-align: left;">
 			<?php
 				if(isset($_SESSION['status']) && $_SESSION['status'] == 'authorized'){
 					
-					// load user name
 					$userID = $_SESSION['userID']; 
 					$query = $dbcon->query("SELECT email FROM users WHERE userID = $userID");
 					$name = $query->fetch(PDO::FETCH_ASSOC);
@@ -54,6 +57,7 @@
 		<div class="col-sm-6" style="text-align: right;">
 			<p><em>Password:</em></p>
 		</div>
+		<!--Keep password section hidden -->
 		<div class="col-sm-4" style="text-align: left;">
 			<p id="profile-pwd"><em>Hidden</em></p>
 		</div>
@@ -71,7 +75,7 @@
   <div id="profileModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
 
-      <!-- Modal content-->
+      <!-- Modal content for edit profile-->
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -81,7 +85,7 @@
           <div>
           	<?php
 
-          		// grab the user information to prepopulate the form
+          		// grab the user information from database to prepopulate the form
           		$userID = $_SESSION['userID']; 
 				$query = $dbcon->query("SELECT * FROM users WHERE userID = $userID");
 				$user = $query->fetch(PDO::FETCH_ASSOC); 
@@ -90,6 +94,7 @@
 				$email = $user['email'];
 
           	?>
+          	<!-- Form for edit profile -->
             <form action="" method="POST">
               <div class="form-group">
                 <label for="name">First Name:</label>
