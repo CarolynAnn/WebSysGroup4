@@ -11,7 +11,7 @@ function db_connect($select_db = true) {
 		'name'    =>  'rpi_events',
 		'host'    =>  'localhost',
 		'user'    =>  'root',
-		'pass'	  =>  'Deathshadow'
+		'pass'	  =>  'password'
 	);
 
     try {
