@@ -11,7 +11,7 @@
 </head>
 
 <?php
-  include('includes/nav2.inc.php'); // include global css, javascript, end the head and open the body
+  include('includes/nav2.inc.php'); // include navigation bar
 ?>
 
 <?php
@@ -32,6 +32,7 @@
     }
 ?>
 
+  <!-- "My Events" Page -->
 
   <div id="my-events" class="container-fluid text-center event-table page">
     <h2>My Events</h2>

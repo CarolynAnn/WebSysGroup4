@@ -42,12 +42,7 @@ function loadEvents(){
                 date.appendChild(document.createTextNode("When: " + dateStr + ", " + startTime + " - " + endTime));
 
                 //Create Buttons
-                //Save Event Button
-                // var save = document.createElement("button");
-                // save.type = "button";
-                // save.className = "btn btn-danger event-btn";
-                // save.id = i + "Remove";
-                // save.innerHTML = "Remove";
+                //Remove Event Button
                 var save = document.createElement("form");
                 save.method = "post";
 
@@ -61,12 +56,6 @@ function loadEvents(){
                 input.formmethod="post";
 
                 save.appendChild(input);
-
-
-
-                //TODO: When Save button clicked....
-                save.addEventListener("click", function(){
-                });
 
                 //View Event Button
                 var view = document.createElement("button");
@@ -89,7 +78,6 @@ function loadEvents(){
                 newEvent.appendChild(loc);
                 newEvent.appendChild(date);
                 newEvent.appendChild(save);
-                // newEvent.appendChild(view);
 
                 //If this is 3rd event in current row, create new row for following events (i.e. only 3 events listed per row)
                 if(i%3 == 0){
@@ -109,6 +97,7 @@ function loadEvents(){
     });
 }
 
+// Format date for display
 function formatDate(date){
     var locale = "en-us";
     var month = date.toLocaleString(locale, {month: "short"});

@@ -1,5 +1,7 @@
 <?php
 
+    // Get events for "My Events" page
+
     session_start();
     require 'resources\functions\config.php';
 

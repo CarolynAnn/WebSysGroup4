@@ -42,6 +42,7 @@ function loadEvents(){
                 date.appendChild(document.createTextNode("When: " + dateStr + ", " + startTime + " - " + endTime));
 
                 //Create Buttons
+
                 //Edit Event Button
                 var save = document.createElement("form");
                 save.method = "post";
@@ -56,15 +57,6 @@ function loadEvents(){
                 input.formmethod="post";
 
                 save.appendChild(input);
-                // var save = document.createElement("button");
-                // save.type = "button";
-                // save.className = "btn btn-info event-btn";
-                // save.id = i + "Edit";
-                // save.innerHTML = "Edit";
-
-                //TODO: When Save button clicked....
-                save.addEventListener("click", function(){
-                });
 
                 //View Event Button
                 var view = document.createElement("button");
@@ -105,6 +97,7 @@ function loadEvents(){
     });
 }
 
+// Format date for display
 function formatDate(date){
     var locale = "en-us";
     var month = date.toLocaleString(locale, {month: "short"});

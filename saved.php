@@ -11,7 +11,7 @@
 </head>
 
 <?php
-  include('includes/nav2.inc.php'); // include global css, javascript, end the head and open the body
+  include('includes/nav2.inc.php'); // include navigation bar
 ?>
 
 <?php
@@ -26,6 +26,7 @@
     }
 ?>
 
+  <!-- "Saved" Page -->
 
   <div id="saved-events" class="container-fluid text-center event-table page">
     <h2>Events Saved by You</h2>
@@ -33,7 +34,7 @@
     <h4 id="loading-saved-events">Loading...</h4>
   </div>
 
-  <!-- Modal -->
+  <!-- "View" Modal -->
   <div id="eventModal-SavedEvents" class="modal fade" role="dialog">
     <div class="modal-dialog">
       <!-- Modal content-->

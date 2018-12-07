@@ -1,4 +1,6 @@
 <?php
+
+	// Get events for home page
    
     require 'resources\functions\config.php';
 
@@ -13,6 +15,7 @@
     if ($conn->connect_error) {
        die("Connection failed: " . $conn->connect_error);
     } 
+    // If doing a search
     if (($_POST["search-bar"]) != null) {
         $text = $_POST["search-bar"];
         $category = $_POST["search-category"];
@@ -29,7 +32,7 @@
 
     $events = [];
     $result = $conn->query($sql);
-    //Loop through results, get info from each row
+    // Loop through results, get info from each row
     for($i = 0; $i < $result->num_rows; $i++){
         $curr_event = [];
         while($row = $result->fetch_assoc()){
@@ -38,9 +41,9 @@
             $i++;
       }
     }
-    /* close result set */
+    // Close result set 
     $result->close();
     $final_arr["Events"] = $events;
-    //Return json data
+    // Return json data
     echo json_encode($final_arr);
 ?>

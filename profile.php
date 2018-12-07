@@ -8,8 +8,10 @@
 ?>
 
 <?php 
-  include('includes/nav2.inc.php'); // include global css, javascript, end the head and open the body
+  include('includes/nav2.inc.php'); // include navigation bar
 ?>
+
+<!-- My Profile Page -->
 
 <div id="my-profile" class="container-fluid text-center page">
 	<h2>My Profile</h2>
@@ -67,7 +69,7 @@
 	<div id="editError"></div> 
 </div>
 
-  <!-- Modal -->
+  <!-- "Edit" Modal -->
   <div id="profileModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
 

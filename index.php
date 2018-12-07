@@ -11,7 +11,7 @@
 
 
 <?php
-  include('includes/nav.inc.php'); // include global css, javascript, end the head and open the body
+  include('includes/nav.inc.php'); // include navigation bar
 ?>
 
 <?php
@@ -35,6 +35,8 @@
 
 
 ?>
+
+<!-- RPI Events Home Page -->
 
   <div class="jumbotron text-center">
     <h1>RPI Events</h1>
@@ -65,7 +67,7 @@
     <h4 id="loading-home">Loading...</h4>
   </div>
 
-  <!-- Modal -->
+  <!--"View" Modal -->
   <div id="eventModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
 

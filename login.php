@@ -8,8 +8,10 @@
 ?>
 
 <?php 
-  include('includes/nav2.inc.php'); // include global css, javascript, end the head and open the body
+  include('includes/nav2.inc.php'); // include navigation bar
 ?>
+
+<!-- Login Page -->
 
   <div class="form">
     <form name="login" action="" method="POST">
@@ -28,7 +30,7 @@
   </div>
 
 
-  <!-- Modal -->
+  <!-- "Create Account" Modal -->
   <div id="accountModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
 

@@ -11,7 +11,7 @@
 </head>
 
 <?php
-  include('includes/nav2.inc.php'); // include global css, javascript, end the head and open the body
+  include('includes/nav2.inc.php'); // include navigation bar
 ?>
 <?php
 
@@ -58,6 +58,8 @@
   }
 
 ?>
+
+  <!-- Create Event Page -->
 
   <div class="container-fluid bg-grey form">
     <h2 class="text-center">Create</h2>

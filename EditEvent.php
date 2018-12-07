@@ -14,7 +14,7 @@
   include('includes/nav2.inc.php'); // include global css, javascript, end the head and open the body
 ?>
 <?php
-  // Handle event creation
+  // Handle event editing
   if (isset($_POST['createSubmit'])) {
 
     $title = isset( $_POST['title'] ) ? make_safe($_POST['title']) : '';
@@ -57,6 +57,8 @@
   }
 
 ?>
+
+<!-- Edit Your Event Page -->
 
   <div class="container-fluid bg-grey form">
     <h2 class="text-center">Edit Event</h2>

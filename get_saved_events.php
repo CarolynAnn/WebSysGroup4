@@ -1,4 +1,7 @@
 <?php
+
+    // Get events for "Saved" page
+
     session_start();
     require 'resources\functions\config.php';
 
