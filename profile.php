@@ -1,13 +1,13 @@
-<?php 
+<?php
   include('includes/init.inc.php'); // include the DOCTYPE and opening tags
 ?>
 <title>RPI Events</title>
 
-<?php 
+<?php
   include('includes/head.inc.php'); // include global css, javascript, end the head and open the body
 ?>
 
-<?php 
+<?php
   include('includes/nav2.inc.php'); // include navigation bar
 ?>
 
@@ -27,7 +27,7 @@
 		<div class="col-sm-4" style="text-align: left;">
 			<?php
 				if(isset($_SESSION['status']) && $_SESSION['status'] == 'authorized'){
-					$userID = $_SESSION['userID']; 
+					$userID = $_SESSION['userID'];
 					$query = $dbcon->query("SELECT firstName, lastName FROM users WHERE userID = $userID");
 					$name = $query->fetch(PDO::FETCH_ASSOC);
 					echo "<p id=\"profile-name\">" . $name['firstName'] . ' ' . $name['lastName'] . "</p>";
@@ -45,8 +45,8 @@
 		<div class="col-sm-4" style="text-align: left;">
 			<?php
 				if(isset($_SESSION['status']) && $_SESSION['status'] == 'authorized'){
-					
-					$userID = $_SESSION['userID']; 
+
+					$userID = $_SESSION['userID'];
 					$query = $dbcon->query("SELECT email FROM users WHERE userID = $userID");
 					$name = $query->fetch(PDO::FETCH_ASSOC);
 					echo "<p id=\"profile-email\">" . $name['email'] . "</p>";
@@ -69,8 +69,8 @@
 		<div class="col-sm-12">
 			<button type="button" class="btn" data-toggle="modal" data-target="#profileModal">Edit</button>
 		</div>
-	</div>	
-	<div id="editError"></div> 
+	</div>
+	<div id="editError"></div>
 </div>
 
   <!-- "Edit" Modal -->
@@ -88,12 +88,12 @@
           	<?php
 
           		// grab the user information from database to prepopulate the form
-          		$userID = $_SESSION['userID']; 
-				$query = $dbcon->query("SELECT * FROM users WHERE userID = $userID");
-				$user = $query->fetch(PDO::FETCH_ASSOC); 
-				$first = $user['firstName'];
-				$last = $user['lastName'];
-				$email = $user['email'];
+          		$userID = $_SESSION['userID'];
+      				$query = $dbcon->query("SELECT * FROM users WHERE userID = $userID");
+      				$user = $query->fetch(PDO::FETCH_ASSOC);
+      				$first = $user['firstName'];
+      				$last = $user['lastName'];
+      				$email = $user['email'];
 
           	?>
           	<!-- Form for edit profile -->

@@ -15,15 +15,22 @@
 ?>
 
 <?php
+    //Check to see if EditEvent $_POST was set
     if ( isset($_POST['EditEvent']) ) {
+      //if it is and value is not -1
       if( $_POST['EditEvent'] != "-1" ) {
+        //change page to the edit page with Event ID in $_GET format.
         $EID = $_POST['EditEvent'];
         header("Location: EditEvent.php?id=$EID");
         $_POST['EditEvent'] = "-1";
       }
     }
+    //If delete is selected
     if ( isset($_POST['delete']) ) {
+      //if delete is not -1
       if( $_POST['delete'] != "-1" ) {
+        //delete all entries that involve Event ID on the attendants page
+        //then delete the event.
         $EID2 = $_POST['delete'];
         $dbcon->exec("DELETE FROM `attendants` WHERE `eid` = '$EID2'");
         $dbcon->exec("DELETE FROM `events` WHERE `id` = '$EID2'");

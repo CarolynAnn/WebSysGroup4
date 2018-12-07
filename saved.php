@@ -15,9 +15,12 @@
 ?>
 
 <?php
-
+    //if Remove Event is set
     if ( isset($_POST['RemoveEvent']) ) {
+      //and value is not -1
       if( $_POST['RemoveEvent'] != "-1" ) {
+        // remove the vent from your saved page by removing it correct attendants
+        // entry
         $EID = $_POST['RemoveEvent'];
         $UID = $_SESSION['userID'];
         $dbcon->exec("DELETE FROM `attendants` WHERE `eid` = '$EID' AND `uid` = '$UID'");

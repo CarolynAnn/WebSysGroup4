@@ -17,9 +17,10 @@
 <?php
 
   // Handle event creation
-
+  // Check to see if person is logged in.
   if (isset($_SESSION['userID'])) {
     $UID = $_SESSION['userID'];
+    //Check to see if the person clicked the save button
     if (isset($_POST['EVENT_ID'])) {
       $EvID= isset( $_POST['EVENT_ID'] ) ? make_safe($_POST['EVENT_ID']) : '';
       $query = $dbcon->query("SELECT * FROM `users` WHERE `userID` = $UID");
@@ -27,6 +28,7 @@
       $firstName = $user['firstName'];
       $lastName = $user['lastName'];
       $query = $dbcon->query("SELECT * FROM `attendants` WHERE `eid` = '$EvID' AND `uid`='$UID' ");
+      //after checking to see if the event is not already saved, save it.
       if($query->rowCount() == 0) {
         $dbcon->exec("INSERT IGNORE INTO `attendants` (`eid`,`uid`) VALUES ('$EvID','$UID')");
       }
@@ -56,7 +58,7 @@
           <input name ="search-bar" id="search-bar" type="text" class="form-control" size="50" placeholder="Search" required>
           <input name="search" id="search" value="Search" type="submit" onclick="isEmpty()" class="btn btn-danger">
           </div>
-        </form> 
+        </form>
       </div>
     </form>
   </div>

@@ -16,7 +16,7 @@
 <?php
   // Handle event editing
   if (isset($_POST['createSubmit'])) {
-
+    //store $_POST data into more usable form.
     $title = isset( $_POST['title'] ) ? make_safe($_POST['title']) : '';
     $start = isset( $_POST['start-time'] ) ? make_safe($_POST['start-time']) : '';
     $end = isset( $_POST['end-time'] ) ? make_safe($_POST['end-time']) : '';
@@ -28,6 +28,7 @@
     $user = $query->fetch(PDO::FETCH_ASSOC);
     $email = $user['email'];
 
+    //error checking below
     if (!$title || !$start || !$end || !$date || !$loc || !$desc){
       echo "<script>alert('Empty field');</script>";
     }else{
@@ -63,17 +64,18 @@
   <div class="container-fluid bg-grey form">
     <h2 class="text-center">Edit Event</h2>
     <?php
-
+      //Code below preloads the data event into the page so you dont have to
+      //Change everything.
     	$eventID = $_GET['id'];
     	global $dbcon;
     	$query = $dbcon->query("SELECT * FROM `events` WHERE `id` = '$eventID;'");
-		$event = $query->fetch(PDO::FETCH_ASSOC);
-		$title = $event['title'];
-		$start = $event['start'];
-		$end = $event['end'];
-		$date = $event['date'];
-		$loc = $event['location'];
-		$desc = $event['description'];
+  		$event = $query->fetch(PDO::FETCH_ASSOC);
+  		$title = $event['title'];
+  		$start = $event['start'];
+  		$end = $event['end'];
+  		$date = $event['date'];
+  		$loc = $event['location'];
+  		$desc = $event['description'];
     ?>
     <form name="create" method="POST" action="">
       <div class="form-group">

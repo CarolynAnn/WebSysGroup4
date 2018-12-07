@@ -6,12 +6,12 @@ include('functions_user.php');
 // Attempt to connect to the database
 function db_connect($select_db = true) {
     global $db_config, $dbcon;
-	
+
 	$db_config = array(
 		'name'    =>  'rpi_events',
 		'host'    =>  'localhost',
 		'user'    =>  'root',
-		'pass'	  =>  'password'
+		'pass'	  =>  'Deathshadow'
 	);
 
     try {
